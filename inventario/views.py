@@ -6,4 +6,6 @@ def saludar(request):
     return render(request,"base.html")
 def despedida(request):
     return HttpResponse("hola mundo estoy en django")
+def listado(request):
+    return render(request,"listado.html")
                   
