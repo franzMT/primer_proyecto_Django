@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Productos
 # Create your views here.
 
-def saludar(request):
-    return render(request,"base.html")
-def despedida(request):
-    return HttpResponse("hola mundo estoy en django")
+
 def listado(request):
-    return render(request,"listado.html")
+    productos = Productos.objects.all()
+    context = {"productos":productos}
+    return render(request,"listado.html",context)
                   

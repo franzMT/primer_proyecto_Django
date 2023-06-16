@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from inventario.views import despedida,saludar,listado
+from inventario.views import listado
 urlpatterns = [
-    path("saludar/",saludar),
-    path("despedida/",despedida),
-    path("",listado)
+    
+    path("listado/",listado),
 ]
