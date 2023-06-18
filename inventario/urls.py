@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from inventario.views import listado
+from inventario.views import listado,crearProducto
 urlpatterns = [
     
-    path("listado/",listado),
+    path("",listado),
+    path("crear/",crearProducto,name="crear"),
 ]

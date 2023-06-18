@@ -24,5 +24,45 @@
       {% endfor %}
     </tbody>
   </table>
-  <button type="button" class="btn btn-primary">Crear Producto</button>
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearProducto">
+  crear producto
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="crearProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">crear nuevo producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-control" action="{% url 'crear' %}" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="ingrese nombre del producto">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Precio</label>
+            <input type="number" class="form-control" name="precio" id="precio" required placeholder="Ingrese precio del Producto">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Stock</label>
+            <input type="number" class="form-control" name="stock" id="stock" required placeholder="Ingrese stock del Producto">
+          </div>
+                  
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">cerrar</button>
+            <button type="submit" class="btn btn-success">aceptar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+  
 {% endblock content %}
