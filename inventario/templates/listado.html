@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}
   Listado De Articulos
   
@@ -12,14 +12,19 @@
       <th>Nombre</th>
       <th>Precio</th>
       <th>Stock</th>
+      <th>Acciones</th>
     </thead>
     <tbody>
       {% for producto in productos %}
-        <tr>
+        <tr class="Productos">
           <td>{{ producto.nombre }}</td>
           <td>{{ producto.precio }}</td>
           <td>{{ producto.stock }}</td>
-          <td><button type="button" class="btn btn-warning">editar</button> <button type="button" class="btn btn-danger">eliminar</button></td>
+
+          <td>
+            <a href="{% url 'editar' producto.id %}"><button type="button" class="btn btn-warning">editar</button></a>
+            <a href="{% url 'eliminar' producto.id %}"><button type="button" class="btn btn-danger">eliminar</button></a>
+          </td>
         </tr>
       {% endfor %}
     </tbody>

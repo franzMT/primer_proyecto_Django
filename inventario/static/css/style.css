@@ -1,0 +1,17 @@
+.Principal{
+    background-color: rgb(35, 39, 41)
+
+}
+h1{
+    font-weight: bold;
+    color: aliceblue;
+}
+.Productos{
+    font-weight: bold;
+    
+}
+.table-bordered thead th,
+.table-bordered tbody td {
+    border: 2px solid rgb(234, 208, 143)
+    
+}
