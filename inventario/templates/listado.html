@@ -12,6 +12,7 @@
       <th>Nombre</th>
       <th>Precio</th>
       <th>Stock</th>
+      <th>Categoria</th>
       <th>Acciones</th>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
           <td>{{ producto.nombre }}</td>
           <td>{{ producto.precio }}</td>
           <td>{{ producto.stock }}</td>
+          <td>{{ producto.categoria }}</td>
 
           <td>
             <a href="{% url 'editar' producto.id %}"><button type="button" class="btn btn-warning">editar</button></a>
@@ -58,6 +60,16 @@
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Stock</label>
             <input type="number" class="form-control" name="stock" id="stock" required placeholder="Ingrese stock del Producto">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Categoria</label>
+            <select name="categoria" id="categoria" class="form-select"  required>
+              <option value="" selected>Elija la categoria</option>
+            {% for categoria in categorias %}
+              <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+            {% endfor %}
+            </select>
           </div>
                   
           <div class="modal-footer">
