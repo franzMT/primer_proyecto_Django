@@ -1,19 +1,22 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Productos
+from .models import Productos,Categoria
 # Create your views here.
 
 
 def listado(request):
     productos = Productos.objects.all()
-    context = {"productos":productos}
+    categorias = Categoria.objects.all()
+    context = {"productos":productos,"categorias":categorias}
     return render(request,"listado.html",context)
 
 def crearProducto(request):
     nombre=request.POST["nombre"]
     precio=request.POST["precio"]
     stock=request.POST["stock"]
-    producto=Productos(nombre=nombre,precio=precio,stock=stock)
+    categoria_id=request.POST["categoria"]
+    categoria=Categoria.objects.get(id=categoria_id) #sfgd
+    producto=Productos(nombre=nombre,precio=precio,stock=stock,categoria=categoria)
     producto.save()
     return redirect("/")
 
