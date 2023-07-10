@@ -15,7 +15,7 @@ def crearProducto(request):
     precio=request.POST["precio"]
     stock=request.POST["stock"]
     categoria_id=request.POST["categoria"]
-    categoria=Categoria.objects.get(id=categoria_id) #sfgd
+    categoria=Categoria.objects.get(id=categoria_id) 
     producto=Productos(nombre=nombre,precio=precio,stock=stock,categoria=categoria)
     producto.save()
     return redirect("/")
@@ -26,20 +26,23 @@ def eliminarProducto(request,id_producto):
     return redirect("/")
 
 def editarProducto(request,id_producto):
+    producto = Productos.objects.get(id=id_producto)
+    categorias = Categoria.objects.all()
     if request.method == "GET":
-        producto = Productos.objects.get(id=id_producto)
-        context = {"producto":producto}
+        context = {"producto":producto,"categorias":categorias}
         return render(request,"editar.html",context)
     elif request.method == "POST":
-        producto = Productos.objects.get(id=id_producto)
         #capturo datos 
         nuevo_nombre = request.POST["nombre"]
         nuevo_precio = request.POST["precio"]
         nuevo_stock = request.POST["stock"]
+        categoria_id=request.POST["categoria"]
+        categoria=Categoria.objects.get(id=categoria_id)
         #asignar nuevo valor
         producto.nombre = nuevo_nombre
         producto.precio = nuevo_precio
         producto.stock = nuevo_stock
+        producto.categoria = categoria
         #guardar
         producto.save()
         return redirect("/")

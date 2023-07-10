@@ -22,6 +22,17 @@
       <label for="exampleFormControlInput1" class="form-label">Stock</label>
       <input type="number" class="form-control" name="stock" id="stock" value="{{producto.stock}}" required placeholder="Ingrese stock del Producto">
     </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Categoria</label>
+        <select name="categoria" id="categoria" class="form-select"  required>
+          <option value="{{producto.categoria.id}}" selected>{{producto.categoria.nombre}}</option>
+        {% for categoria in categorias %}
+          <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+        {% endfor %}
+        </select>
+      </div>
+
             
     <div class="modal-footer">
       <button type="submit" class="btn btn-success">Aceptar</button>
